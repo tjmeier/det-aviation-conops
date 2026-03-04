@@ -1,4 +1,4 @@
-# Roles, Responsibilities & Interactions
+# Roles, Responsibilities & Interactions {#roles}
 
 This section outlines the various entity roles in the ecosystem. For each, it summarizes motivations for participating in that DRIP role, as well as the interactions and responsibilities they have in doing so. All entity roles, except as otherwise noted, MUST register a DET with a parent entity in the corresponding parental role (e.g. an HDA must register with an RAA), as per REF.HME.FACES, and MUST use it subsequently in all DRIP interactions requiring an entity ID.
 

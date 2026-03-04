@@ -1,3 +1,3 @@
 # Security Considerations {#sc}
 
-The considerations discussed in {{RFC9153}}, {{RFC9374}}, {{RFC9434}}, {{RFC9575}}, {{DET.DNS}} and REF.DME.IFACES apply.
+The considerations discussed in {{RFC9153}}, {{RFC9374}}, {{RFC9434}}, {{RFC9575}}, {{RFC9886}} and REF.DME.IFACES apply.

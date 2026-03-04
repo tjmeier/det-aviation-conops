@@ -2,12 +2,12 @@ coding: utf-8
 
 title: Concept of Operations for DRIP Entity Tag Usage in an Aviation Ecosystems
 abbrev: det-aviation-conops
-docname: draft-atw-drip-det-conops-00
-stream: IETF
+docname: draft-atw-det-conops-00
+stream: independent
 
 ipr: trust200902
 area: Internet
-wg: drip Working Group
+wg: Drone Remote ID Protocol
 kw: Internet-Draft
 cat: info
 
@@ -18,9 +18,19 @@ author:
 -   ins: A. Wiethuechter
     name: Adam Wiethuechter
     org: AX Enterprize, LLC
-    street: 4947 Commercial Drive
-    city: Yorkville
-    region: NY
-    code: 13495
-    country: USA
     email: adam.wiethuechter@axenterprize.com
+contributor:
+-   name: Stuart Card
+    org: AX Enterprize, LLC
+    email: stu.card@axenterprize.com
+    contribution: |
+        Stuart Card was a major contributor framing the use-cases of 
+        DETs for aviation, specifically UAS, in {{intro}} and 
+        the expected roles and responsibilities of {{roles}}.
+-   name: Robert Moskowitz
+    org: HTT Consulting
+    email: rgm@htt-consulting.com
+    contribution: |
+        Robert Moskowitz is the primary architect of {{dkix}}. 
+        He was instrumental in aligning the DKIX with the ICAO 
+        Trust Framework Panel and Security Panel.

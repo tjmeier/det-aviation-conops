@@ -1,12 +1,8 @@
 # DRIP Key Infrastructure X.509 (DKIX) {#dkix}
 
-This appendix is normative.
+The following sections define a series of profiles that are OKIX-compliant from REF.HME.IFACES. These profiles were developed to function within the {{ICAO.ACCP}} to support not just UAS but also general aviation.
 
-The following sections define profiles and any specific field content for X.509 certificates that serve as a "shadow" of Endorsements that make up the DRIP Key Infrastructure (DKI). DKIX is an HKIX specifically serving the UAS and wider aviation ecosystem under the {{ICAO.ACCP}}. It is recommended that DKIX-Full ({{dkix-full}}) be deployed, as its CA certificates contain ICAO policy OIDs the reflect on the whole DKIX deployment.
-
-A DKIX compliant Certificate Authority (CA) MUST implement generation of the DKI Endorsements. It SHOULD also generate both DKIX profiles ({{dkix-lite}} and {{dkix-full}}). In this section Endorsing Server and CA are interchangeable.
-
-> Author Note: At this point in defining the shadow PKIs, alternatives to a strict hierarchy is still an open work item.
+A DKIX-compliant Certificate Authority (CA) MUST implement generation of the Endorsements in alignment with {{Section 4.2 of RFC9575}}. It SHOULD also generate both DKIX profiles ({{dkix-lite}} and {{dkix-full}}) and use the Lite Profile for Canonical Certificates in DNS. In this section Endorsing Server and CA are interchangeable.
 
 ## Signing Request {#dkix-csr}
 

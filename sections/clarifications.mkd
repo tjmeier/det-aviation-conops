@@ -2,61 +2,76 @@
 
 This section re-iterates, expands and clarifies specific elements as part of the various referenced standards for use of DETs specifically in the UAS/aviation ecosystem.
 
-Data structures in DRIP are extensible using a registry of interchange keys defined in REF.HME.IFACES. Policy by a CAA and/or DIME MAY add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
+Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.HME.IFACES. Policy by a CAA and/or DIME MAY add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
+ 
+This document standardizes the use of an aviation key (REQUIRED, OPTIONAL or RECOMMENDED) based on the HHIT Entity Type. A `*` character in a given cell of {{tbl-inquiry-keys}}, {{tbl-response-keys}} or {{tbl-rdap-keys}} indicates all HHIT Entity Types for the given normative language column apply.
+
+DIMEs MUST provide to their clients in a public form the following information:
+
+- Additional aviation keys supported in a registration inquiry ({{inquiry-keys}})
+- Additional aviation keys clients should expect to be returned in a registration response ({{response-keys}})
+- X.509 policies on the field contents of a Certificate Signing Request (CSR) and Certificate
+  - Of importance is the Subject contents for a CSR and the HHIT Entity Type being registered as this MAY be affected by CAA policy
 
 ## Registration
 
-### Client Request Keys
+Registration services are provided via a POST HTTPS interface that consumes and produces either COSE or JOSE objects. It is RECOMMENDED that a DIMEs Authorization certificate is used in HTTPS for server side authentication.
 
-This document standardizes the use of keys that are REQUIRED and/or OPTIONAL during registration of the following HHIT Entity Types in {{reg-add-keys}}.
+RAAs MUST implement the Oracle as a Service (OaaS) of REF.HME.IFACES. Failure to provide this critical check can, as demonstrated in the example found in the reference, create instances where bogus data is presented to authorized users during lookup attempting to perform enforcement.
 
-| HHIT Entity Type(s) | Required Additional Keys | Optional Additional Keys |
-| ------------------- | ------------------------ | ------------------------ |
-| UA, UAS, RID | - | uas, utm, caa_assigned_id, pilot_license_id |
-| OPERATOR, PILOT | pilot_license_id | - | 
-{: #reg-add-keys title="Required Additional Keys for Registration"}
+DIMEs MUST use the `/.well-known/ome/register` endpoint for interoperable client discovery. See REF.HME.IFACES for implementation details.
 
-Any additional keys not covered in the above table MUST be published by the DIME to clients in some way. 
+### Registration Inquiry Keys {#inquiry-keys}
 
-### Client CSRs
+| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
+| -------- | -------- | -------- | ----------- |
+| vnb | | * | |
+| vna | | * | |
+| publish | | * | |
+| contact | | OPERATOR, PILOT | |
+| pilot_license_id | | | PILOT |
+| caa_assigned_id | UA | UAS, RID | |
+| utm | | UAS, RID | |
+| uas | | | UAS, RID |
+{: #tbl-inquiry-keys title="Aviation Keys for Registration Inquiry"}
 
-Clients register using a DKIX-compliant Certificate Signing Request (CSR, {{dkix-csr}}) as part of a Web Token claim. {{reg-csr-subs}} provides the required Subject contents for a CSR for each HHIT Entity Type.
+### Registration Response Keys {#response-keys}
 
-| HHIT Entity Type(s) | CSR Subject Type | Subject Contents |
-| ------------------- | ---------------- | ---------------- |
-| UA, UAS, RID | Serial Number | {{ANSI.CTA.2063A}} UAS Serial Number |
-| OPERATOR | - | - |
-| PILOT | - | - |
-{: #reg-csr-subs title="CSR Subjects for Registration"}
-
-### DIME Processing of Requests
-
-Registration MUST result in DKIX-compliant certificates ({{dkix}}) generated and compiled by the DIME. DIMEs also MUST generate and compile for clients the Broadcast Endorsement chain of the registration for the HHIT Entity Types that require it.
-
-It is expected that the RAA implements the Oracle as a Service (OaaS) of REF.HME.IFACES in some form. Failure to provide this critical check can, as demonstrated in the example found in the reference, create instances where bogus data is presented to authorized users during lookup attempting to perform enforcement.
-
-### DIME Response Keys
-
-TBD
+| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
+| -------- | -------- | -------- | ----------- |
+| canon_x | * | | |
+| canon_chain | * | | |
+| be | APEX, RAA, HDA, UAS, RID | | |
+| be_chain | APEX, RAA, HDA, UAS, RID | | |
+| publish | | * | |
+{: #tbl-response-keys title="Aviation Keys for Registration Response"}
 
 ## Query
 
-### URI Location
+Query services are provided via a GET HTTPS interface that produces JSON objects. It is RECOMMENDED that the DIMEs Authorization certificate is used in HTTPS for server side authentication. Client SHOULD use their Operational certificate as part of client side of the HTTPS exchange. 
 
-Clients should expect that the URI used for the RDAP queries in DRIP are part of the HDA Issuer DKIX-compliant certificate ({{dkix}}). This will require all clients to perform two DNS lookups: one for the in question DET and another for the endorsing DET (i.e. HDA Issuer) to obtain the URI.
+DIMEs MUST use the `/.well-known/ome/query/` endpoint for interoperable client discovery. See REF.HME.IFACES for implementation details.
 
-### Client Certificate
+### Uniform Resource Identifier {#query-uri}
 
-It is RECOMMENDED that clients register themselves with a relevant DIME in their jurisdiction that acts as the "trusted" Certificate Authority for all RDAP queries. This is most likely the RAA, but may be an HDA run by the CAA specifically for this purpose.
+The DIMEs Issuing certificate MUST contain the base portion of the URI as described in DKIX. Clients obtain the base URI of a given DET by performing the recursive lookup to obtain the Issuing certificate. A DIME MAY place the base URI in Operational certificates, enabling a single lookup to obtain the base URI, but clients MUST NOT depend on this behavior.
 
-This registration then provides the required certificate to be used in RDAP with Mutual TLS.
+Clients MUST construct the full query string by concatenating the base URI from a certificate and the `/.well-known/ome/query/<ipv6>` of the desired DET before performing the HTTPS GET call. 
 
-### RDAP Response Keys
+### RDAP Response Keys {#rdap-keys}
 
-{{rdap-keys}} is a list of the additional keys expected for each HHIT Entity Type as apart of an RDAP response. Note that any of the fields defined here MAY be redacted due to policy based on the users credentials for access.
+| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
+| -------- | -------- | -------- | ----------- |
+| canon_x | * | | |
+| canon_chain | * | | |
+| be | APEX, RAA, HDA, UAS, RID | | |
+| be_chain | APEX, RAA, HDA, UAS, RID | | |
+| utm | | UAS, RID | |
+| uas | | UA, UAS, RID | |
+| uas_serial_number | UA, UAS, RID | | |
+| caa_assigned_id | | UA, UAS, RID | |
+| pilot_license_id | PILOT | | |
+| oracle_x | | | * |
+{: #tbl-rdap-keys title="Aviation Keys for RDAP Response"}
 
-| HHIT Entity Type(s) | Additional Keys |
-| ------------------- | --------------- |
-| UA, UAS, RID | be_chain, oracle_x509, uas, utm, registrant, caa_assigned_id, uas_serial_number |
-| OPERATOR, PILOT | pilot_license_id, oracle_x509 |
-{: #rdap-keys title="RDAP Response Keys"}
+Information registered via the CONTACT aviation key MUST be include in the RDAP response using the proper RDAP entity.

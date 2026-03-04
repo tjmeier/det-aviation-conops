@@ -1,7 +1,6 @@
 normative:
-  DET.DNS: I-D.ietf-drip-registries
-
   RFC9153: # drip-requirements
   RFC9374: # drip-det
   RFC9434: # drip-arch
   RFC9575: # drip-auth
+  RFC9886: # drip-dns
