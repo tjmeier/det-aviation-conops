@@ -1,0 +1,49 @@
+uas = {
+  uas_type => nibble-field,
+  uas_ids => [ + [
+    id_type: nibble-field,
+    uas_id: bytes .size(20)
+  ]],
+  ? auths => [ + [
+    type: nibble-field,
+    data: bytes .size(1..362)
+  ]],
+  ? self_id => [
+    type: uint .size(1),
+    description: text .size(23)
+  ],
+  ? classification => [
+    region: 0..8,
+    class: nibble-field,
+    category: nibble-field
+  ]
+  ? area => [
+    count: 1..255,
+    radius: number,
+    floor: number,
+    ceiling: number
+  ],
+  ? operator_id => [
+    type: uint .size(1),
+    id: bytes .size(20)
+  ],
+  ? ua_status => nibble-field,
+  ? track_dir => 0..361,
+  ? ua_position => [
+    lla: position,
+    pressure_altitude: number
+  ],
+  ? ua_height => [
+    is_agl: bool,
+    height: number
+  ],
+  ? ua_speed => [
+    vertical: number,
+    horizontal: number
+  ],
+  ? ae_positions => [ + [
+    source: 0..3,
+    lla: position
+  ]],
+  ? uas_time => tdate / time
+}

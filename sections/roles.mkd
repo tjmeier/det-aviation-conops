@@ -49,7 +49,7 @@ This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3
 - SHOULD provide a mechanism to enable, during registration, subsequent encryption of selected fields (e.g. pilot/GCS location), only if the CAA allows it.
 - MUST follow {{Section 6 of RFC9575}} as it relates to transmission of SAMs, when using DET as an Authentication Key ID
 - MUST, in the {{ASTM.F3411}} Basic ID Message, set the UAS ID Type to Specific Session ID, Specific Session ID Type to DRIP Entity ID, and encode the DET in network byte order, when using DET as a UAS Session ID
-- MAY use a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number
+- MAY use a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number {{ANSI.CTA.2063A}}
     - It is expected that the UAS Manufacturer runs their own HDA, under which these DETs are registered
 
 ## HDA Operators
@@ -66,7 +66,7 @@ Being associated with a USS has some operational benefits:
 An HDA Operator:
 
 - MUST register, with its parent RAA, one or more DETs, and use it or them in DRIP interactions
-- MUST implement interfaces and functions described in REF.HME.IFACES
+- MUST implement interfaces and functions described in REF.OME.IFACES
 - MUST maintain DET registrations with relevant PII as required by their jurisdiction
 - MUST fulfill the requirements of their jurisdiction
 - SHOULD NOT provide to clients the ability to enable encryption of data elements considered PII, especially in Broadcast RID
@@ -74,7 +74,7 @@ An HDA Operator:
 As part of a USS an HDA Operator also:
 
 - MAY provide encryption ID services, if allowed by jurisdiction
-- MAY have its registration interfaces (REF.HME.IFACES) be integrated into relevant USS interfaces and functions
+- MAY have its registration interfaces (REF.OME.IFACES) be integrated into relevant USS interfaces and functions
 - SHOULD defer the publishing of a client DET in DNS when it is bound with an Operational Intent until it is "active"
     - Methods to sync an Operational Intent in a USS state and DET state in HDA are out of scope for this document
 
@@ -88,7 +88,7 @@ An RAA Operator:
 
 - MUST obtain an RAA value(s) from the Apex Operator and provide content for NS RRType(s), see {{caa-ic}}
 - MUST register, with its parent (if any), one or more DETs, and use it or them in DRIP interactions
-- MUST implement interfaces and functions described in REF.HME.IFACES
+- MUST implement interfaces and functions described in REF.OME.IFACES
 - MUST maintain DET registrations with relevant PII as required by their jurisdiction
 - MUST provide requirements for prospective HDA Operators, and SHOULD do so publicly via an easily located web site
 - MUST ensure HDA Operator compliance with this specification

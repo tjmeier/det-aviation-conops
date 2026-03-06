@@ -1,0 +1,6 @@
+nibble-field = 0..15
+position = #6.103([
+  latitude: number,
+  longitude: number,
+  altitude: number
+])

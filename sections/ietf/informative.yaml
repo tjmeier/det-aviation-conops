@@ -2,7 +2,6 @@ informative:
   RFC4108: # ieee 802.1ar hardware
   RFC5280: # pkix
   RFC5952: # ipv6
-  RFC8126: # iana-considerations
   RFC8610: # cddl
   RFC9063: # hip arch
 
@@ -85,3 +84,10 @@ informative:
         org: IANA
     target: https://www.iana.org/assignments/drip/
     date: Oct 2025
+  IANA.MediaTypes:
+    title: Media Types
+    author:
+      -
+        org: IANA
+    target: https://www.iana.org/assignments/media-types
+    date: July 2025

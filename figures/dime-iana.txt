@@ -1,0 +1,47 @@
+Key: Broadcast Endorsement
+Description: Broadcast Endorsement
+Name: be
+Label: 15
+Value Type: bytes
+Change Controller: IETF
+Reference: This RFC
+
+Key: Broadcast Endorsement Chain
+Description: List of Broadcast Endorsements
+Name: be_chain
+Label: 16
+Value Type: array of bytes
+Change Controller: IETF
+Reference: This RFC
+
+Key: CAA Assigned ID
+Description: CAA Assigned ID
+Name: caa_assigned_id
+Label: 17
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: Pilot License Number
+Description: Pilot license number from a CAA
+Name: pilot_license_id
+Label: 18
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Serial Number
+Description: ANSI/CTA 2063-A UAS Serial Number
+Name: uas_serial_number
+Label: 19
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Traffic Management (UTM)
+Description: UTM Operational Intent & Source
+Name: utm
+Label: 20
+Value Type: array
+Change Controller: IETF
+Reference: This RFC

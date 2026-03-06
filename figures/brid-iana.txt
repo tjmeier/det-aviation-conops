@@ -1,0 +1,119 @@
+Key: UAS Type 
+Description: ASTM F3411 UAS Type Enumeration
+Name: uas_type
+Label: 0
+Value Type: uint
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: UAS Identifiers
+Description: UAS ID Type & Value Pairs
+Name: uas_ids
+Label: 1
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: Authentication Data
+Description: Authentication Type & Data Pairs
+Name: auths
+Label: 2
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: Self ID
+Description: Self Description Type & Value
+Name: self_id
+Label: 3
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: UAS Classification
+Description: UAS Category & Class
+Name: classification
+Label: 4
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: Area
+Description: Count, Radius, Floor & Ceiling 
+Name: area
+Label: 5
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: Operator ID
+Description: UAS Pilot Operator ID
+Name: operator_id
+Label: 6
+Value Type: array
+Change Controller: IETF
+Reference: RFC9886, BRID RRType
+
+Key: UAS Status
+Description: ASTM F3411 UAS Status Enumeration 
+Name: ua_status
+Label: 7
+Value Type: uint
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Track Direction
+Description: Track Direction
+Name: track_dir
+Label: 8
+Value Type: uint
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Position
+Description: UA Position & Altitudes
+Name: ua_position
+Label: 9
+Value Type: array 
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Height
+Description: UA Height
+Name: ua_height
+Label: 10
+Value Type: array 
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Speed
+Description: UA Horizontal & Vertical Speed
+Name: ua_speed
+Label: 11
+Value Type: array 
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Additional Element Positions
+Description: Additional Element Position & Source Pairs
+Name: ae_positions
+Label: 12
+Value Type: array 
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Timestamp
+Description: UTC Timestamp
+Name: uas_time
+Label: 13
+Value Type: tdate or time
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Datum
+Description: ASTM F3411 UAS Datum
+Name: uas
+Label: 14
+Value Type: map
+Change Controller: IETF
+Reference: This

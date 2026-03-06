@@ -8,7 +8,7 @@
 
 --- abstract
 
-This document standardizes usage of Drone Remote Identification Protocol (DRIP) Entity Tags (DETs) as identifiers to enable trustworthy Air Domain Awareness (ADA) for Unmanned Aircraft Systems (UAS) in Remote Identification (RID), UAS Traffic Management (UTM) and Advanced Air Mobility (AAM). DETs can serve as Session IDs for privacy, Authentication Key IDs for accountability, and encryption key IDs for confidentiality.
+This document is a concept of operations for Drone Remote Identification Protocol (DRIP) Entity Tags (DETs) as identifiers to enable trustworthy Air Domain Awareness (ADA) for Unmanned Aircraft Systems (UAS) in Remote Identification (RID), UAS Traffic Management (UTM) and Advanced Air Mobility (AAM). DETs can serve as Session IDs for privacy, Authentication Key IDs for accountability, and encryption key IDs for confidentiality.
 
 --- middle
 
@@ -31,3 +31,5 @@ This document standardizes usage of Drone Remote Identification Protocol (DRIP) 
 --- back
 
 {::include-nested sections/appendix/abbrev.mkd}
+
+{::include-nested sections/appendix/cddl.mkd}

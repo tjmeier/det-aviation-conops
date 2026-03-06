@@ -4,7 +4,7 @@
 
 This document provides to stakeholders in a National Airspace System (NAS), such as a Civil Aviation Authority (CAA) and its constituents, a point of entry into a set of relevant standards. These standards provide guidance to enable trustworthy Air Domain Awareness (ADA) primarily via cooperative technologies. Such technologies can include, but are not limited to, Unmanned Aircraft (UA) Systems (UAS) Remote Identification (RID), UAS Traffic Management (UTM) and Advanced Air Mobility (AAM). 
 
-This document specifies an interoperable manner of achieving the stated objectives in an international context to be used by CAAs in a relevant Means of Compliance (MOC). One such MOC is {{ASTM.F3586}} for UAS RID to comply with the United States (US) CAA regulations.
+This document specifies a concept of operations for interoperable use of DETs as an identity in an international and domestic aviation context. CAAs may adopt this document as-is to become a Means of Compliance (MOC) in their jurisdiction. This document can also be referenced in other documents providing baseline guidance for identity services in an ecosystem.
 
 A CAA MAY mandate through other mechanisms additional requirements beyond this document for UAS interoperability in their jurisdiction.
 
@@ -20,14 +20,12 @@ Participating entities are assumed in this document to be in compliance with rel
 
 This document governs use of a DET in the following cases:
 
-1. An entity that uses a Session ID (some participating entities, e.g. HDAs, may not need Session IDs), MUST use a DET for that Session ID.
+1. An entity that uses a UAS Session ID (some participating entities, e.g. HDAs, may not need UAS Session IDs), MUST use a DET for that UAS Session ID.
 2. An entity that participates in DRIP interactions (even if not needing a Session ID), MUST use a DET for the DRIP public authentication key ID in those interactions.
 3. An entity that requires a strongly cryptographically verifiable IP compatible identifier, MAY use a DET for any other legal purpose.
 4. An entity SHOULD NOT use a DET as a locator in physical or logical space (e.g. as a globally routable IPv6 address outside of an overlay network), as deconflation is intended, see {{RFC9063}}.
 
-The archetypal case is a UAS for which the DET serves as both the UAS ID (first case above) and the Authentication Key ID (second case).
-
-> Author Note: narrow context for at least first bullet above.
+The archetypal case is a UAS for which the DET serves as both the UAS ID (first case above) and the Authentication Key ID (second case). Application of this document in a UAS context overlays on the existing {{ASTM.F3586}}, a MOC for UAS RID in compliance with United States (US) CAA regulations, to enable support of the archetypal case in Broadcast RID.
 
 ### Targeted DronesQuad Criteria
 

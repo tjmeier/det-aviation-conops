@@ -4,4 +4,4 @@
 
 ## Additional Definitions & Abbreviations
 
-TBD
+See {{Section 2.2 of RFC9153}} for a complete list of aviation related terminology.

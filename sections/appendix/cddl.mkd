@@ -1,0 +1,31 @@
+# Aviation CDDL & Encoding Rules
+
+This appendix is normative and uses the Concise Data Definition Language (CDDL, {{RFC8610}}).
+
+## Prelude
+
+The CDDL Prelude of {{aviation-prelude}} is built upon the prelude defined in REF.OME.IFACES.
+
+~~~~
+{::include cddl/prelude.cddl}
+~~~~
+{: #aviation-prelude title="Aviation CDDL Prelude"}
+
+## F3411 UAS Datum {#astm-cddl}
+
+The static content of {{uas-cddl}} is lifted from {{RFC9886}}, specifically the BRID RRType. The additional fields added are to support the dynamic fields defined in the Broadcast RID portion of {{ASTM.F3411}}. Use of these new fields  are not to be used in registration but included for completeness and to support expected future work with UAS data models.
+
+~~~ ascii-text
+{::include cddl/uas.cddl}
+~~~
+{: #uas-cddl title="F3411 UAS CDDL"}
+
+## Other Datums
+
+~~~~ ascii-text
+utm = [
+  url: text,
+  operational_intent: #6.37(bytes)
+]
+~~~~
+{: #other-cddl title="Other CDDL"}
