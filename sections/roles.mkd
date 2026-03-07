@@ -1,6 +1,6 @@
 # Roles, Responsibilities & Interactions {#roles}
 
-This section outlines the various entity roles in the ecosystem. For each, it summarizes motivations for participating in that DRIP role, as well as the interactions and responsibilities they have in doing so. All entity roles, except as otherwise noted, MUST register a DET with a parent entity in the corresponding parental role (e.g. an HDA must register with an RAA) and MUST use it subsequently in all DRIP interactions requiring an entity ID.
+This section outlines the various entity roles in the ecosystem. For each, it summarizes motivations for participating in that DRIP role, as well as the interactions and responsibilities they have in doing so. All entity roles, except as otherwise noted, register a DET with a parent entity in the corresponding parental role (e.g. an HDA must register with an RAA) and use it subsequently in all DRIP interactions requiring an entity ID.
 
 ## UAS Observers
 
@@ -10,17 +10,17 @@ An Observer is typically an individual who has a device capable of wirelessly re
 
 All Observers supporting DRIP:
 
-- MUST adhere to relevant details of {{Section 6.4.2 of RFC9575}} with regards to receive processing of DRIP SAMs.
-    - Processing of SAMs MAY be deferred or outsourced to a dedicated system.
-- RECOMMEND display all DETs following {{RFC5952}} or as described in {{hid-abbrev}}.
+- adhere to relevant details of {{Section 6.4.2 of RFC9575}} with regards to receive processing of DRIP SAMs.
+  - Processing of SAMs could be deferred or outsourced to a dedicated system.
+- display all DETs following {{RFC5952}} or as described in {{hid-abbrev}}.
 
 > Author Note: as justification for "processing MAY be deferred": Intention here was to allow for Observers not needing to fully process data if desired and push said processing to SDSPs. An example is a slim Finder concept that does no parsing of RID data, just extraction out of transport framing.
 
 Observers authorized by cognizant authorities to access any private (in addition to all public) information recorded as part of the registration process also:
 
-- MUST support RDAP authentication/authorization mechanisms of REF.HME.FACES and others allowed by the cognizant authority.
-- MUST register to authentication systems as required by the cognizant authority.
-    - A DIME MAY be used as part of an authentication system.
+- support RDAP authentication/authorization mechanisms of REF.HME.FACES and others allowed by the cognizant authority.
+- register to authentication systems as required by the cognizant authority.
+  - A DIME can be used as part of an authentication system.
 
 ## UAS Operators
 
@@ -33,7 +33,7 @@ A UAS Operator's desire to use DETs can be any number of the following operation
     - This option may be constrained by their jurisdiction's RID regulations.
 - Reputation of their UAS based on observation and reports of behavior supported by Authentication.
 
-To participate a UAS Operator SHOULD use a DET, registered either with an RAA or HDA, as part of any interactions in DRIP, such as registering a UAS Session ID for their UA. A UAS Operator MAY use another cryptographic scheme for interactions but it MUST be asymmetric with their public key accessible to all domain participants via a standardized method for the cryptographic purpose of signature verification.
+To participate a UAS Operator uses a DET, registered either with an RAA or HDA, as part of any interactions in DRIP, such as registering a UAS Session ID for their UA. A UAS Operator can use another cryptographic scheme for interactions but it has to be asymmetric with their public key accessible to all domain participants via a standardized method for the cryptographic purpose of signature verification.
 
 ## UAS Manufacturers
 
@@ -41,16 +41,16 @@ While UAS Manufactures do not have a direct requirement for DRIP, they typically
 
 This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3411}}. Thus those that wish to support DRIP also:
 
-- MUST provide a mechanism, typically through a GCS, to generate and register a DET for use as either a Session ID, Authentication Key ID or both.
-    - MUST bind DET to both UAS Serial Number and Operator. Binding MAY be indirect if system can verify Serial Number already registered to Operator.
-    - SHOULD be issued in a manner that keeps private key ONLY ever on UA, does not expose it to GCS etc., but MAY be done in manner that exposes it to GCS or Operator if necessary.
-    - SHOULD allow user selection of a parent DIME (typically HDA) using a URI, Hierarchy ID (HID) value, or both
-    - MAY support registering multiple DETs in a batch transaction
-- SHOULD provide a mechanism to enable, during registration, subsequent encryption of selected fields (e.g. pilot/GCS location), only if the CAA allows it.
-- MUST follow {{Section 6 of RFC9575}} as it relates to transmission of SAMs, when using DET as an Authentication Key ID
-- MUST, in the {{ASTM.F3411}} Basic ID Message, set the UAS ID Type to Specific Session ID, Specific Session ID Type to DRIP Entity ID, and encode the DET in network byte order, when using DET as a UAS Session ID
-- MAY use a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number {{ANSI.CTA.2063A}}
-    - It is expected that the UAS Manufacturer runs their own HDA, under which these DETs are registered
+- provides a mechanism, typically through a GCS, to generate and register a DET for use as either a Session ID, Authentication Key ID or both
+  - bind DET to both UAS Serial Number and Operator. Binding can be indirect if system can verify Serial Number already registered to Operator
+  - are issued in a manner that keeps private key **only** ever on UA, does not expose it to GCS etc., but could be done in manner that exposes it to GCS or Operator if necessary
+  - allows user selection of a parent DIME (typically HDA) using a URI, Hierarchy ID (HID) value, or both
+  - supports registering multiple DETs in a batch transaction
+- provides a mechanism to enable, during registration, subsequent encryption of selected fields (e.g. pilot/GCS location), only if the CAA allows it.
+- follows {{Section 6 of RFC9575}} as it relates to transmission of SAMs, when using DET as an Authentication Key ID
+- in the {{ASTM.F3411}} Basic ID Message, sets the UAS ID Type to Specific Session ID, Specific Session ID Type to DRIP Entity ID, and encode the DET in network byte order, when using DET as a UAS Session ID
+- uses a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number {{ANSI.CTA.2063A}}
+  - It is expected that the UAS Manufacturer runs their own HDA, under which these DETs are registered
 
 ## HDA Operators
 

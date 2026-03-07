@@ -11,7 +11,7 @@ DIMEs provide to their clients in a public method the following information:
 - Additional aviation keys supported in a registration inquiry ({{inquiry-keys}})
 - Additional aviation keys clients should expect to be returned in a registration response ({{response-keys}})
 - X.509 policies on the field contents of a Certificate Signing Request (CSR) and Certificate
-  - Of importance is the Subject contents for a CSR and the HHIT Entity Type being registered as this MAY be affected by CAA policy
+  - Of importance is the Subject contents for a CSR and the HHIT Entity Type being registered as this could be affected by CAA policy
 
 To declare the map elements being using in any of the DIME structures the registered Media Types in {{iana-media-types}} are used in the HTTP Content-Type header. All of these use the Aviation Keys registry of {{IANA.DRIP}}.
 

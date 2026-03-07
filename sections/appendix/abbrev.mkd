@@ -1,17 +1,17 @@
 # HID Abbreviation {#hid-abbrev}
 
-The DET MAY be abbreviated. This is useful for display applications with limited screen real-estate as the display of the entire 128-bit (32 characters in hexadecimal, even without recommended punctuation or spacing) IPv6 address can be costly. Abbreviations SHOULD follow the following format rules.
+This appendix is informative.
+
+The DET can be abbreviated. This is useful for display applications with limited screen real-estate as the display of the entire 128-bit (32 characters in hexadecimal, even without recommended punctuation or spacing) IPv6 address can be costly. Abbreviations follows the following format rules.
 
 *Hierarchy Level*:
-: Each hierarchy level (RAA/HDA) is represented by a maximum of six alphanumeric characters. This abbreviation SHOULD NOT be a single character in length, for obvious reasons of not being very useful. The decimal representation does fit into the 4 character restriction but is NOT RECOMMENDED. The RECOMMENDED abbreviation for the RAA level is to use the ISO3166-1 Alpha 2 code for nations. This abbreviation MAY be found in DNS under a HHIT RRType of the entity or its parents. If there is no abbreviation hint display devices SHOULD use a fixed size four character hexadecimal representation of the value. It is RECOMMENDED that display applications specify a default RAA value, and only display the RAA abbreviation explicitly when it does not match the default.
+: Each hierarchy level (RAA/HDA) is represented by a maximum of six alphanumeric characters. This abbreviation is always more than a single character in length. The decimal representation does fit into the 4 character restriction but is not recommended. The recommended abbreviation for the RAA level is to use the ISO3166-1 Alpha 2 code for nations. This abbreviation is found in DNS under a HHIT RRType of the entity or its parents. If there is no abbreviation hint display devices use the fixed size four character hexadecimal representation of the value. It is recommended that display applications specify a default RAA value, and only display the RAA abbreviation explicitly when it does not match the default.
 
 *Entity Hash*:
-: The entity is represented by a fixed size four character hexadecimal string using the last four characters of the DET. If a collision (within the same HID space) on display occurs, the four characters SHOULD shift to the left by one hexadecimal character until the collision is resolved. This window MUST stay within the last sixteen hexadecimal characters of the DET. The `:` character found in an IPv6 address string is ignored.
-
-> Review(SWC): Do we need to insert a flag character such as "*" to indicate when a hash has been shifted? If the abbreviation is used only to avoid conflicts, no; but if anyone actually knows some DETs in their operation, if they get shifted, they probably won't recognize them.
+: The entity is represented by a fixed size four character hexadecimal string using the last four characters of the DET. If a collision (within the same HID space) on display occurs, the four characters shift to the left by one hexadecimal character until the collision is resolved. This window stays within the bounds of the last sixteen hexadecimal characters of the DET. The `:` character found in an IPv6 address string is ignored. A character such as a `^`, `~` is used to indicate that hash shifting has occurred for display purposes.
 
 *Delimiter*:
-: Each section is delimited by a single character. This can be any whitespace character (except newline and tab) or any non-alphanumeric character (period, comma, semicolon, etc.). It is RECOMMENDED that the delimiter is consistent between components. The RECOMMENDED delimiter is the colon (`:`) character.
+: Each section is delimited by a single character. This can be any whitespace character (except newline and tab) or any non-alphanumeric character (period, comma, semicolon, etc.). It is recommended that the delimiter is consistent between components. The recommended delimiter is the colon (`:`) character.
 
 For example a DET with the values of RAA 16383 and HDA 1 without any abbreviation hint from DNS is represented by the string `3FFF 0001 xxxx` with `xxxx` representing a entity hash. If an abbreviation for the RAA (such as `DRIP01`) and HDA (such as `TEST`) are found in DNS then the DET can be represented with the string of `DRIP01 TEST xxxx`.
 
