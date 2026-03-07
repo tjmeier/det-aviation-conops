@@ -21,9 +21,9 @@ Participating entities are assumed in this document to be in compliance with rel
 This document governs use of a DET in the following cases:
 
 1. An entity that uses a DET as a UAS Session ID (some participating entities, e.g. HDAs, may not need UAS Session IDs)
-2. An entity that uses a DET as an authentication key ID to participates in authenticated DRIP interactions
-3. An entity using a DET that requires a strongly cryptographically verifiable IP compatible identifier for any other legal purpose
-4. An entity is not using a DET as a locator in physical or logical space (e.g. as a globally routable IPv6 address outside of an overlay network), as deconflation is intended, see {{RFC9063}}
+2. An entity that uses a DET as an authentication key ID to participate in authenticated DRIP interactions
+3. An entity using a DET for any other legal purpose that requires a strongly cryptographically verifiable IP compatible identifier
+4. An entity not using a DET as a locator in physical or logical space (e.g. as a globally routable IPv6 address outside of an overlay network), as deconflation is intended, see {{RFC9063}}
 
 The archetypal case is a UAS for which the DET serves as both the UAS ID (first case above) and the Authentication Key ID (second case). Application of this document in a UAS context overlays on the existing {{ASTM.F3586}}, a MOC for UAS RID in compliance with United States (US) CAA regulations, to enable support of the archetypal case in Broadcast RID.
 
