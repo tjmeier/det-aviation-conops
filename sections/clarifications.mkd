@@ -1,6 +1,6 @@
 # Aviation Ecosystem Considerations
 
-This section re-iterates, expands and clarifies specific elements as part of the various referenced standards for use of DETs specifically in the UAS/aviation ecosystem.
+This section re-iterates, expands and clarifies specific elements as part of the various referenced standards for use of DETs specifically in the UAS/aviation ecosystem.Key
 
 Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.OME.IFACES. Policy by a CAA and/or DIME may add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
  
@@ -23,7 +23,7 @@ DIMEs provide the registration service under the `/.well-known/ome/register` end
 
 ### Inquiry Keys {#inquiry-keys}
 
-| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| Aviation Key | Required | Optional | Recommended |
 | ------------ | -------- | -------- | ----------- |
 | vnb | | * | |
 | vna | | * | |
@@ -37,7 +37,7 @@ DIMEs provide the registration service under the `/.well-known/ome/register` end
 
 ### Response Keys {#response-keys}
 
-| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| Aviation Key | Required | Optional | Recommended |
 | ------------ | -------- | -------- | ----------- |
 | canon_x | * | | |
 | canon_chain | * | | |
@@ -60,7 +60,7 @@ Clients construct the full query string by concatenating the base URI from a cer
 
 ### RDAP Response Keys {#rdap-keys}
 
-| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| Aviation Key | Required | Optional | Recommended |
 | ------------ | -------- | -------- | ----------- |
 | canon_x | * | | |
 | canon_chain | * | | |
