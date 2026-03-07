@@ -2,31 +2,29 @@
 
 This section re-iterates, expands and clarifies specific elements as part of the various referenced standards for use of DETs specifically in the UAS/aviation ecosystem.
 
-Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.OME.IFACES. Policy by a CAA and/or DIME MAY add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
+Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.OME.IFACES. Policy by a CAA and/or DIME may add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
  
-This document standardizes the use of an aviation key (REQUIRED, OPTIONAL or RECOMMENDED) based on the HHIT Entity Type. A `*` character in a given cell of {{tbl-inquiry-keys}}, {{tbl-response-keys}} or {{tbl-rdap-keys}} indicates all HHIT Entity Types for the given normative language column apply.
+This document standardizes the usage of aviation keys based on the HHIT Entity Type. A `*` character in a given cell of {{tbl-inquiry-keys}}, {{tbl-response-keys}} or {{tbl-rdap-keys}} indicates all HHIT Entity Types for the given column apply.
 
-DIMEs MUST provide to their clients in a public method the following information:
+DIMEs provide to their clients in a public method the following information:
 
 - Additional aviation keys supported in a registration inquiry ({{inquiry-keys}})
 - Additional aviation keys clients should expect to be returned in a registration response ({{response-keys}})
 - X.509 policies on the field contents of a Certificate Signing Request (CSR) and Certificate
   - Of importance is the Subject contents for a CSR and the HHIT Entity Type being registered as this MAY be affected by CAA policy
 
-To declare the map elements being using in any of the DIME structures the registered Media Types in {{iana-media-types}} SHOULD be used in the HTTP Content-Type header. All of these use the Aviation Keys registry of {{IANA.DRIP}}.
+To declare the map elements being using in any of the DIME structures the registered Media Types in {{iana-media-types}} are used in the HTTP Content-Type header. All of these use the Aviation Keys registry of {{IANA.DRIP}}.
 
 ## Registration
 
-Registration services are provided via a POST HTTPS interface that consumes and produces either COSE or JOSE objects. It is RECOMMENDED that a DIMEs Authorization certificate is used in HTTPS for server side authentication.
+Registration services are provided via a POST HTTPS interface that consumes and produces either COSE or JOSE objects. The DIMEs Authorization certificate can be used in HTTPS for server side authentication.
 
-RAAs MUST implement the Oracle as a Service (OaaS) of REF.OME.IFACES. Failure to provide this critical check can, as demonstrated in the example found in the reference, create instances where bogus data is presented to authorized users during lookup attempting to perform enforcement.
-
-DIMEs MUST use the `/.well-known/ome/register` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
+DIMEs provide the registration service under the `/.well-known/ome/register` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
 
 ### Inquiry Keys {#inquiry-keys}
 
-| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
-| -------- | -------- | -------- | ----------- |
+| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| ------------ | -------- | -------- | ----------- |
 | vnb | | * | |
 | vna | | * | |
 | publish | | * | |
@@ -39,8 +37,8 @@ DIMEs MUST use the `/.well-known/ome/register` endpoint for interoperable client
 
 ### Response Keys {#response-keys}
 
-| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
-| -------- | -------- | -------- | ----------- |
+| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| ------------ | -------- | -------- | ----------- |
 | canon_x | * | | |
 | canon_chain | * | | |
 | be | APEX, RAA, HDA, UAS, RID | | |
@@ -50,20 +48,20 @@ DIMEs MUST use the `/.well-known/ome/register` endpoint for interoperable client
 
 ## Query
 
-Query services are provided via a GET HTTPS interface that produces JSON objects. It is RECOMMENDED that the DIMEs Authorization certificate is used in HTTPS for server side authentication. Client SHOULD use their Operational certificate as part of client side of the HTTPS exchange. 
+Query services are provided via a GET HTTPS interface that produces JSON objects. The RDAP exchanges uses Mutual TLS for authentication with the OKIX certificates of the DIME and client.
 
-DIMEs MUST use the `/.well-known/ome/query/` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
+DIMEs provide query services under the `/.well-known/ome/query/` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
 
 ### Uniform Resource Identifier {#query-uri}
 
-The DIMEs Issuing certificate MUST contain the base portion of the URI as described in DKIX. Clients obtain the base URI of a given DET by performing the recursive lookup to obtain the Issuing certificate. A DIME MAY place the base URI in Operational certificates, enabling a single lookup to obtain the base URI, but clients MUST NOT depend on this behavior.
+The DIMEs Issuing certificate contain the base portion of the URI as described in OKIX. Clients obtain the base URI of a given DET by performing the recursive lookup to obtain the Issuing certificate.
 
-Clients MUST construct the full query string by concatenating the base URI from a certificate and the `/.well-known/ome/query/<ipv6>` of the desired DET before performing the HTTPS GET call. 
+Clients construct the full query string by concatenating the base URI from a certificate and the `/.well-known/ome/query/<ipv6>` of the desired DET before performing the HTTPS GET call. 
 
 ### RDAP Response Keys {#rdap-keys}
 
-| Key Name | REQUIRED | OPTIONAL | RECOMMENDED |
-| -------- | -------- | -------- | ----------- |
+| AVIATION KEY | REQUIRED | OPTIONAL | RECOMMENDED |
+| ------------ | -------- | -------- | ----------- |
 | canon_x | * | | |
 | canon_chain | * | | |
 | be | APEX, RAA, HDA, UAS, RID | | |
@@ -76,4 +74,4 @@ Clients MUST construct the full query string by concatenating the base URI from 
 | oracle_x | | | * |
 {: #tbl-rdap-keys title="Aviation Keys for RDAP Response"}
 
-Information registered via the CONTACT aviation key MAY be include in the RDAP response using the proper RDAP entity.
+Information registered via the CONTACT aviation key could be include in the RDAP response using the proper RDAP entity.

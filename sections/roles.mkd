@@ -69,7 +69,7 @@ Being associated with a USS has some operational benefits:
 
 ### SDSP/HDA Operators
 
-Having and HDA as a SDSP can provide unified identifiers across a UTM or set of USS in a UTM. More than one SDSP may be available giving USS and their clients choices to distribute anonymity.
+Having and HDA as a SDSP can provide unified identifiers across a UTM or set of USS in a UTM. More than one SDSP may be available giving USS and their clients choices to distribute anonymity across providers.
 
 ## RAA Operators
 

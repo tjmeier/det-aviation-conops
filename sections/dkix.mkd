@@ -6,7 +6,11 @@ The DKI is a series of policies and X.509 profiles that are OKI(X)-compliant wit
 
 ## DRIP Key Infrastructure X.509 (DKIX) {#dkix}
 
-A DKIX-compliant Certificate Authority (CA) MUST implement generation of the Endorsements in alignment with {{Section 4.2 of RFC9575}}. It SHOULD also generate both DKIX profiles ({{dkix-lite}} and {{dkix-full}}) and use the Full Profile for the Canonical Registration Certificates in the DNS. In this section Endorsing Server and CA are interchangeable.
+A DKIX-compliant Certificate Authority implements the following items to endorse a OKIX-compliant Certificate Signing Request ({{dkix-csr}}):
+
+- OKIX certificates following {{dkix-lite}}
+- OKIX certificates following {{dkix-full}}; to be used as the Canonical Registration Certificate in the DNS
+- Endorsements in alignment with {{Section 4.2 of RFC9575}}; for any HHIT Entity Type that returns them per {{response-keys}}
 
 ### Signing Request {#dkix-csr}
 
@@ -29,16 +33,16 @@ Certificate Request:
 ~~~~
 
 *Subject*:
-: As defined in {{Section 4.1.2.6 of RFC5280}}. This field is filled in based on the type of entity being registered. When the entity being registered is UA, UAS or RID the attribute type MUST be set to SERIAL_NUMBER and MUST contain the {{ANSI.CTA.2063A}} UAS Serial Number encoded as a string. The value of this field for other entity types are subject to policy and are out of scope for this document.
+: As defined in {{Section 4.1.2.6 of RFC5280}}. This field is filled in based on the type of entity being registered. When the entity being registered is UA, UAS or RID the attribute type is set to SERIAL_NUMBER and contains the {{ANSI.CTA.2063A}} UAS Serial Number encoded as a string. The value of this field for other entity types are subject to policy and are out of scope for this document.
 
 *Subject Alternative Name*:
-: When the registrant knows which HID and/or Suite ID they want the CSR SHOULD contain the Subject Alternate Name extension as defined in {{Section 4.2.1.6 of RFC5280}} using ipAddress containing the fully formed DET and MUST mark the extension as `critical`. The DIME MUST check to ensure that the DET located in the extension is properly generated with the included public key of this CSR. If the registrant does not know or care the value of their HID and/or Suite ID, the Extensions field MUST NOT appear and the DIME will use its HID for DET generation using the public key provided by this CSR. 
+: When the registrant knows which HID and/or Suite ID they want the CSR can contain the Subject Alternate Name extension as defined in {{Section 4.2.1.6 of RFC5280}} using ipAddress containing the fully formed DET and marks the extension as `critical`. The DIME checks to ensure that the DET located in the extension is properly generated with the included public key of this CSR. If the registrant does not know or care the value of their HID and/or Suite ID, the Extensions field does not appear and the DIME will use its HID for DET generation using the public key provided by this CSR. 
 
 The use of other Extension fields are out of scope for this document.
 
 ### Lite Profile {#dkix-lite}
 
-DKIX-Lite is designed to fully mirror the DKI in the smallest reasonable X.509 certificates (e.g. 240 bytes for DER), but still adhere to {{RFC5280}} MUST field usage. The profile can be found in {{dkix-lite-profile}} and a field matrix found in {{dkix-lite-matrix}}.
+DKIX-Lite is designed to fully mirror the DKI in the smallest reasonable X.509 certificates (e.g. 240 bytes for DER), but still adhere to {{RFC5280}} field usage. The profile can be found in {{dkix-lite-profile}} and a field matrix found in {{dkix-lite-matrix}}.
 
 ~~~~
 Certificate:
@@ -74,7 +78,7 @@ Certificate:
 | Subject Key Identifier (SKI) | MUST NOT | MUST NOT | MUST NOT | - |
 | Authority Key Identifier (AKI) | MUST NOT | MUST NOT | MUST NOT | - |
 | Key Usage | MAY | MAY | MAY | - |
-| CA Policy OIDs | MAY | MAY | MAY | {{policy-oid}} | 
+| Certificate Authority Policy OIDs | MAY | MAY | MAY | {{policy-oid}} | 
 {: #dkix-lite-matrix title="DKIX-Lite Field Matrix"}
 
 ### Full Profile {#dkix-full}
@@ -120,7 +124,7 @@ Certificate:
 | Subject Key Identifier (SKI) | MUST | MUST | MUST NOT | {{ski}} |
 | Authority Key Identifier (AKI) | MUST | MUST | MUST | {{aki}} |
 | Key Usage | SHOULD | SHOULD | SHOULD | - |
-| CA Policy OIDs | RECOMMENDED | RECOMMENDED | RECOMMENDED | {{policy-oid}}
+| Certificate Authority Policy OIDs | RECOMMENDED | RECOMMENDED | RECOMMENDED | {{policy-oid}}
 {: #dkix-full-matrix title="DKIX-Full Field Matrix"}
 
 ### Certificate Fields
@@ -131,11 +135,11 @@ The following sections contain clarifications on the usage of fields in the DKIX
 
 ##### Lite Profile {#lite-serial}
 
-The Serial Number is a MUST field, but it has no usage in this DRIP-Lite. It is 1-byte in size and thus duplicates are guaranteed. To drop this field could make many X.509 parsing libraries fail. 
+The Serial Number is a required field, but it has no usage in this DRIP-Lite. It is 1-byte in size and thus duplicates are guaranteed. To drop this field could make many X.509 parsing libraries fail. 
 
-However, CA certificate's Serial Number MAY be the common 20 bytes. This is to avoid possible issues with general software expecting this size Serial Numbers for CAs. 
+However, Certificate Authority certificate's Serial Number can be the common 20 bytes. This is to avoid possible issues with general software expecting this size Serial Numbers for CAs. 
 
-If Serial Numbers are incrementally assigned, 31 bits are sufficient for an Issuing CA with 2B DETs active. A CA should determine its best-used Serial Number field size to limit the impact of this field on the certificate size.
+If Serial Numbers are incrementally assigned, 31 bits are sufficient for an Issuing Certificate Authority with 2B DETs active. A Certificate Authority should determine its best-used Serial Number field size to limit the impact of this field on the certificate size.
 
 ##### Full Profile {#full-serial}
 
@@ -143,60 +147,58 @@ The certificates will contain a 20-byte randomly generated Serial Number, compli
 
 #### Subject {#ca-subject}
 
-The Subject field is only used in Authorization and Issuing Certificates. For Operational Certificates, the Subject is Empty and the DET will be in Subject Alternative Name (SAN, {{san-ip6}}). In the SAN, the DET can be properly encoded as an IPv6 address.
+The Subject field is only used in Authorization and Issuing Certificates. For Operational Certificates, the Subject is empty and the DET will be in Subject Alternative Name (SAN, {{san-ip6}}). In the SAN, the DET can be properly encoded as an IPv6 address.
 
-The format defined in {{ca-subject-format}} SHOULD be used when possible. Existing {{RFC5280}} policy MAY require this value to encoded elsewhere in the certificate. The CA Subject Name serves a dual purpose: foremost, to place the CA within the DKI tree, but secondly for outside of DRIP usage to tag that this CA's function is to serve DRIP Entities.
+The format defined in {{ca-subject-format}} is to be used when possible. Existing policy can require this value to encoded elsewhere in the certificate. The Certificate Authority Subject Name serves a dual purpose: foremost, to place the Certificate Authority within the DKI tree, but secondly for outside of DRIP usage to tag that this CA's function is to serve DRIP Entities.
 
 ~~~~
 DRIP-{APEX|RAA|HDA}-{A|I}[-RAA#][-HDA#]
 ~~~~
-{: #ca-subject-format title="CA Subject Format"}
+{: #ca-subject-format title="Certificate Authority Subject Format"}
 
 As examples; an Authorization DET for RAA 16376 would be: `DRIP-RAA-A-16376` and an Issuing DET for HDA 16376 under the same RAA would be: `DRIP-HDA-I-16376-16376`.
 
 #### Issuer
 
-The Issuer MUST be the higher level's DET. 
+The Issuer is the higher level's DET in the hierarchy. 
 
-The Issuer for the Apex Authorization certificate MUST be its DET (indicating self-signed). If the RAA Authorization certificate is self-signed (i.e., no Apex), its Issuer is its DET. 
+The Issuer for the Apex Authorization certificate it to be its own DET (indicating self-signed). If the RAA Authorization certificate is self-signed (i.e., no Apex), its Issuer is its DET. 
 
 The Issuer content of its DET assists in finding this specific Issuer in the DRIP `ip6.arpa.` DNS tree and any additional information.
 
 #### Subject Alternative Name IP6 {#san-ip6}
 
-Subject Alternative Name is only used in Operational certificates. It is used to provide the DET as an IP address with an Empty Subject (SAN MUST be flagged as Critical). 
+Subject Alternative Name is only used in Operational certificates. It is used to provide the DET as an IP address with an empty Subject (and marking the SAN as Critical). 
 
 The Subject Alternative Name is also used in Manufacturer DET certificates. These may contain the `hardwareModuleName` as described in {{IEEE.802.1AR}} that references {{RFC4108}}. 
 
-Per {{RFC5280}} and {{IEEE.802.1AR}}, Manufacturer DET certificates with `hardwareModuleName` MUST have the notAfter date as `99991231235959Z`.
+Per {{RFC5280}} and {{IEEE.802.1AR}}, Manufacturer DET certificates with `hardwareModuleName` have the notAfter date as `99991231235959Z`.
 
 #### Subject Alternative Name URI {#san-uri}
 
-This field contains a pointer in the form of a URI where additional information on the CA and certificates under its control can be found. For example, an authorized authority may access end-entity PII like an Operator phone number through this URI link.
+This field contains a pointer in the form of a URI where additional information on the Certificate Authority and certificates under its control can be found. For example, an authorized authority may access end-entity PII like an Operator phone number through this URI link.
 
-Authorization certificates MAY have a SAN URI and MUST when it is self-signed. Issuing certificates SHOULD have a SAN URI. Operational certificates MAY have a SAN URI.
+Authorization certificates can have a SAN URI and always do when it is self-signed. Issuing certificates typically have a SAN URI. Operational certificates occasionally have a SAN URI.
 
-The RECOMMENDED configuration with respect to Issuing and Operational certificates for a CA is to place the SAN URI in the Issuing certificate and exclude them in Operational certificates. When multiple providers are used by the CA to handle additional information there SHOULD be a unique Issuing certificate with SAN URI for each provider, and Operational certificates MUST NOT contain a SAN URI. Otherwise a CA with multiple providers MUST NOT have a SAN URI in the Issuing certificate and MUST set the SAN URI to the specific provider for each Operational certificate.
+Common configuration with respect to Issuing and Operational certificates for a Certificate Authority is to place the SAN URI in the Issuing certificate and exclude them in Operational certificates. When multiple providers are used by the Certificate Authority to handle additional information there would be a unique Issuing certificate with SAN URI for each provider, and Operational certificates would not contain a SAN URI. Otherwise a Certificate Authority with multiple providers do not have a SAN URI in the Issuing certificate and set the SAN URI to the specific provider for each Operational certificate.
 
 The contents of the SAN URI are the base URL containing at least the fields scheme, host and port to query for additional information of a DET.
 
 #### Subject Key Identifier {#ski}
 
-The Subject Key Identifier MUST be the DET. This is a major deviation from "standard" X.509 certificates that hash (normally with SHA2) the Public Key to fill the Subject Key Identifier. 
+The Subject Key Identifier is the Subject's DET. This is a major deviation from "standard" X.509 certificates that hash (normally with SHA2) the Public Key to fill the Subject Key Identifier. 
 
-The Subject Key Identifier is NOT included in Operational certificates. If needed by some application, it is identical with SAN.
+The Subject Key Identifier is excluded from Operational certificates. If needed by some application, it is identical with SAN.
 
 #### Authority Key Identifier {#aki}
 
-The Authority Key Identifier MUST be the higher level's Subject Key Identifier (i.e. DET). This partially follows standard practice to chain up the Authority Key Identifier from the Subject Key Identifier, except for how the Subject Key Identifiers are populated. 
+The Authority Key Identifier is the higher level's Subject Key Identifier (i.e. DET). This partially follows standard practice to chain up the Authority Key Identifier from the Subject Key Identifier, except for how the Subject Key Identifiers are populated. 
 
-The Authority Key Identifier for the Apex Authorization (or self-signed RAA Authorization) certificate MUST be the Subject Key Identifier (indicating self-signed).
+The Authority Key Identifier for the Apex Authorization (or self-signed RAA Authorization) certificate is equivalent to the Subject Key Identifier (indicating self-signed).
 
-#### CA Policy OIDs {#policy-oid}
+#### Certificate Authority Policy OIDs {#policy-oid}
 
-It is recommended that a CA have policy OIDs defining rules for EEs within its domain. The OIDs used here will tend to be within ICAO's arc of `1.3.27.16`.
-
-If the CA certificate has policy OIDs, it MUST include an ICAO LOA OID (arc of `1.3.27.16.1.1.0`) defining "the confidence in the security measures that protect the private key and manage the certificate lifecycle".
+It is recommended that a Certificate Authority have policy OIDs defining rules for Operational entities within its domain. The OIDs used here are within ICAO's Level of Attestation (LOA) arc of `1.3.27.16.1.1.0`. This arc defines "the confidence in the security measures that protect the private key and manage the certificate lifecycle".
 
 | OID | Description | Applicability |
 | --- | ----------- | ------------- |
@@ -215,4 +217,4 @@ If the CA certificate has policy OIDs, it MUST include an ICAO LOA OID (arc of `
 
 In this document, the term “Device” is defined as a Non-Person Entity, i.e., an entity with a digital identity that acts in cyberspace but is not a human actor. This can include Organizations, hardware devices (e.g. a UA), software applications, and information artifacts. 
 
-Operational Certificates issued to Devices shall assert policies mapped to LowDevice, MediumDevice, MediumDeviceHardware, or High Content Signing policies. All other policies defined here should be reserved for human Subscribers when used in Operational Certificates. Thus it is recommended that Issuing CAs/HDAs should be segregated by device and human subscribers so policy can be stated at the CA level rather in individual certificates.
+Operational Certificates issued to Devices shall assert policies mapped to LowDevice, MediumDevice, MediumDeviceHardware, or High Content Signing policies. All other policies defined here should be reserved for human Subscribers when used in Operational Certificates. Thus it is recommended that Issuing CAs/HDAs should be segregated by device and human subscribers so policy can be stated at the Certificate Authority level rather in individual certificates.
