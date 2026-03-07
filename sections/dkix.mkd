@@ -4,6 +4,7 @@ The DKIX is OKI(X)-compliant with REF.OME.IFACES. It is part of {{ICAO.ACCP}} to
 
 A DKIX-compliant Certificate Authority implements the following items to endorse a OKIX-compliant Certificate Signing Request REF.OME.IFACES:
 
+- use of {{RFC9374}} for identities
 - OKIX certificates following REF.OME.IFACES
 - OKIX certificates following REF.OME.IFACES; to be used as the Canonical Registration Certificate in the DNS
 - Endorsements in alignment with {{Section 4.2 of RFC9575}}; for any HHIT Entity Type that returns the aviations keys of `be` and `be_chain` per {{response-keys}}
