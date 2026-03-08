@@ -1,6 +1,5 @@
 informative:
   RFC4108: # ieee 802.1ar hardware
-  RFC5280: # pkix
   RFC5952: # ipv6
   RFC8610: # cddl
   RFC9063: # hip arch

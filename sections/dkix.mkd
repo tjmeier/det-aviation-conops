@@ -1,13 +1,23 @@
 # DRIP Key Infrastructure X.509 (DKIX) {#dkix}
 
-The DKIX is OKI(X)-compliant with REF.OME.IFACES. It is part of {{ICAO.ACCP}} to support not just UAS but also general aviation.
+The DKIX is part of the {{ICAO.ACCP}} to support not just UAS but also general aviation. It mandates the following:
 
-A DKIX-compliant Certificate Authority implements the following items to endorse a OKIX-compliant Certificate Signing Request REF.OME.IFACES:
+- all entities 
+  - use {{RFC9374}} for identity (key algorithm; EdDSA) and identifier
+  - register using REF.OME.IFACES including {{csr-subject}} and {{cert-san-hmn}}
+- all Certificate Authorities 
+  - issue certificates following REF.OME.IFACES and REF.OME.IFACES including {{cert-san-hmn}} and {{cert-ca-policy}}
+  - issue Endorsements following {{Section 4.2 of RFC9575}} for any HHIT Entity Type that returns the aviations keys of `be` and `be_chain` per {{response-keys}}
 
-- use of {{RFC9374}} for identities
-- OKIX certificates following REF.OME.IFACES
-- OKIX certificates following REF.OME.IFACES; to be used as the Canonical Registration Certificate in the DNS
-- Endorsements in alignment with {{Section 4.2 of RFC9575}}; for any HHIT Entity Type that returns the aviations keys of `be` and `be_chain` per {{response-keys}}
+## Signing Request: Subject {#csr-subject}
+
+For REF.OME.IFACES, when the HHIT Entity Type being registered is UA, UAS or RID the Subject is to be set as SERIAL_NUMBER containing an {{ANSI.CTA.2063A}} UAS Serial Number. Subjects for other HHIT Entity Types are left to policy and are out of scope for this document.
+
+## Subject Alternative Name: Hardware Module Name {#cert-san-hmn}
+
+A UAS Manufacturer could follow {{IEEE.802.1AR}} which specifies the use of a Subject Alternative Name from {{Section 5 of RFC4108}}. This can be present in an Operational certificate issued from UAS Manufacturers running a DIME along with the originating Certificate Signing Request. It's presence indicates that the notAfter field of the Operational certificate is to be set to `99991231235959Z`.
+
+## Full Profile: CA Policy OID {#cert-ca-policy}
 
 It is recommended that a Certificate Authority have policy OIDs defining rules for Operational entities within its domain. The OIDs used here are within ICAO's Level of Assurance (LOA) arc of `1.3.27.16.1.1.0`. This arc defines "the confidence in the security measures that protect the private key and manage the certificate lifecycle".
 
