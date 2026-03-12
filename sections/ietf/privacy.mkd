@@ -12,7 +12,7 @@ The properties of a DET allow it to be used as a Session ID and/or an Authentica
 
 > Author Note: renamed section and/or add more explicit disclaimer?
 
-Selective encryption may be allowed in some circumstances. An HHIT may be used in a private lookup to access decryption key material or obtain decryption as a service.
+Selective encryption may be allowed in some circumstances. An observed DET may be used in a private lookup to access decryption key material or obtain decryption as a service.
 
 Selective encryption of UAS RID using DRIP is only allowed when the DET to be used as the Session ID is issued by an HDA associated with a USS and that DET is associated with the corresponding Operational Intent in UTM. This enables the encryption of selected data elements in Broadcast RID to provide a layer of privacy for operators (e.g. their position) without compromising transparency to entities (e.g. public safety / law enforcement personnel) that need to know.
 
