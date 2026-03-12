@@ -37,8 +37,6 @@ To participate a UAS Operator uses a DET, registered either with an RAA or HDA, 
 
 ## UAS Manufacturers
 
-While UAS Manufactures do not have a direct requirement for DRIP, they typically wish to maintain good reputation of their brands and are often driven by market forces. Such forces include requirements and preferences of both UAS Observers and Operators.
-
 This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3411}}. Thus those that wish to support DRIP also:
 
 - provides a mechanism, typically through a GCS, to generate and register a DET for use as either a Session ID, Authentication Key ID or both
