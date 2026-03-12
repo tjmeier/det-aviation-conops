@@ -68,7 +68,7 @@ Associating an HDA with the USS has some operational benefits:
 
 ### SDSP/HDA Operators
 
-Having and HDA as a SDSP can provide unified identifiers across a UTM or set of USS in a UTM. More than one SDSP may be available giving USS and their clients choices to distribute registrations across providers.
+Having and HDA as a SDSP can provide unified identifiers across a UTM or a set of USSs in a UTM. More than one SDSP may be available giving USS and their clients choices to distribute registrations across providers.
 
 ## RAA Operators
 
