@@ -59,7 +59,7 @@ In the UTM context, it is expected that the HDA function will be provided by a U
 
 ### USS/HDA Operators
 
-Being associated with a USS has some operational benefits:
+Associating an HDA with the USS has some operational benefits:
 
 - Ease for UAS Operators to use both Session IDs and UTM together
 - Binding/synchronization between DETs and Operational Intents
