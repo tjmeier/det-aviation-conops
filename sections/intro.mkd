@@ -28,7 +28,7 @@ The prototypical case is a UAS for which the DET serves as both the UAS ID (firs
 
 ### Targeted DronesQuad Criteria
 
-See {{DsQ.Criteria}} for expanded details.
+DronesQuad is ..... DRIP can fulfull DronesQuad critieria allowing for international harmonization.... See {{DsQ.Criteria}} for expanded details.
 
 #### 010: Aerial Complementary Equipment and Services (ACES)
 
