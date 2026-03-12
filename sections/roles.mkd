@@ -48,7 +48,7 @@ This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3
 - provides a mechanism to enable, during registration, subsequent encryption of selected fields (e.g. pilot/GCS location), only if the CAA allows it.
 - follows {{Section 6 of RFC9575}} as it relates to transmission of SAM data when using DET as an Authentication Key ID
 - in the {{ASTM.F3411}} Basic ID Message, sets the UAS ID Type to Specific Session ID, Specific Session ID Type to DRIP Entity ID, and encode the DET in network byte order, when using DET as a UAS Session ID
-- uses a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number {{ANSI.CTA.2063A}}
+- may use a DET, following {{Section 4.2 of RFC9374}}, as a UAS Serial Number {{ANSI.CTA.2063A}}
   - It is expected that the UAS Manufacturer runs their own HDA, under which these DETs are registered
 
 ## HDA Operators
