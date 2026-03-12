@@ -42,7 +42,7 @@ This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3
 - provides a mechanism, typically through a GCS, to generate and register a DET
   - DET for use as either a Session ID, Authentication Key ID or both
   - bind DET to both UAS Serial Number and Operator. Binding can be indirect if HDA can verify Serial Number already registered to Operator
-  - are issued in a manner that keeps private key **only** ever on UA, does not expose it to GCS etc., but could be done in manner that exposes it to GCS or Operator if necessary
+  - are issued in a manner that keeps private key **only** ever on UA, but could be done in manner that exposes it to GCS or Operator if necessary
   - allows user selection of a parent DIME (typically HDA) using a URI, Hierarchy ID (HID) value, or both
   - supports registering multiple DETs in a batch transaction
 - provides a mechanism to enable, during registration, subsequent encryption of selected fields (e.g. pilot/GCS location), only if the CAA allows it.
