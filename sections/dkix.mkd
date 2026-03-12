@@ -19,11 +19,11 @@ A UAS Manufacturer could follow {{IEEE.802.1AR}} which specifies the use of a Su
 
 ## Full Profile: CA Policy Object Identifiers (OIDs) {#cert-ca-policy}
 
-It is recommended that a Certificate Authority have policy OIDs defining rules for Operational entities within its domain. The OIDs used here are within ICAO's Level of Assurance (LOA) arc of `1.3.27.16.1.1.0`. This arc defines "the confidence in the security measures that protect the private key and manage the certificate lifecycle".
+It is recommended that a Certificate Authority have policy OIDs defining rules for Operational entities within its domain. The OIDs used here are within ICAO's Level of Assurance (LOA) arc of `1.3.27.16.1.1.0`. This arc defines "the confidence in the security measures that protect the private key and manage the certificate lifecycle". {{loa-oid-table}} defines 11 Identity Assurance Levels (IALs) that are applicable.
 
 | OID | Description | Applicability |
 | --- | ----------- | ------------- |
-| 1 | Low | This level is relevant to environments where Risks and consequences of data Compromise are low. Subscriber Private Keys shall be stored in software at this Identity Assurance Level (IAL). |
+| 1 | Low | This level is relevant to environments where Risks and consequences of data Compromise are low. Subscriber Private Keys shall be stored in software at this IAL. |
 | 2 | LowDevice | This policy is identical to that defined for the Low Assurance policy (above) with the exception of identity proofing, re-key, and Activation Data. |
 | 3 | Low-TSP Mediated Signature | This policy is identical to that defined for the Low Assurance policy (above) with the exception that the Private key is not in the possession of the user, but rather by a Trust Service Provider. |
 | 4 | Medium | This level is relevant to environments where Risks and consequences of data Compromise are moderate. This may include transactions having substantial monetary value or Risk of fraud or involving access to private information where the likelihood of malicious access is substantial. Subscriber Private Keys shall be stored in software at this IAL. |
