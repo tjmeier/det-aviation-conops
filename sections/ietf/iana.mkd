@@ -1,32 +1,14 @@
 # IANA Considerations {#ic}
 
-## RAA Delegation for CAAs {#caa-ic}
+## RAA Delegation for CAAs {#iana-caa}
 
 As part of {{RFC9886}} IANA already has the pre-allocated mapping of RAA values for CAAs. Nations are to follow the guidance in {{Section 6.2.1.4 of RFC9886}} to request delegation of their DNS zone under `3.0.0.1.0.0.2.ip6.arpa.`.
 
-## Media Types {#iana-media-types}
+## HOME Aviation Parameters {#iana-hap}
 
-IANA is requested to add the following entries to the "Media Types" registry {{IANA.MediaTypes}}.
-
-| Name | Template | Reference |
-| ---- | -------- | --------- |
-| aviation+cose | application/aviation+cose | This RFC |
-| aviation+jose | application/aviation+jose | This RFC |
-| aviation+json | application/aviation+json | This RFC |
-{: #tbl-aviation-media-types title="Aviation Media Types"}
-
-## Aviation Keys {#iana-ak}
-
-IANA is requested to add the following entries to the "Aviation Keys" registry {{IANA.DRIP}}.
+IANA is requested to add the entries of {{txt-hap-dime}} to the "HOME Aviation Parameters" registry under {{IANA.DRIP}}.
 
 ~~~ ascii-text
-{::include figures/brid-iana.txt}
+{::include figures/ascii-text/hap-iana.txt}
 ~~~
-{: #astm-keys title="Aviation Keys: ASTM F3411 UAS Keys"}
-
-The full definition of the keys defined in {{astm-keys}} can be found in {{astm-cddl}}.
-
-~~~ ascii-text
-{::include figures/dime-iana.txt}
-~~~
-{: #dime-keys title="Aviation Keys: DIME Keys"}
+{: #txt-hap-dime title="New HOME Aviation Parameters"}

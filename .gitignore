@@ -5,4 +5,4 @@
 metadata.min.js
 !examples/*
 !*-template.txt
-!figures/*
+!figures/**

@@ -1,59 +1,3 @@
-Key: UAS Type 
-Description: ASTM F3411 UAS Type Enumeration
-Name: uas_type
-Label: 0
-Value Type: uint
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: UAS Identifiers
-Description: UAS ID Type & Value Pairs
-Name: uas_ids
-Label: 1
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: Authentication Data
-Description: Authentication Type & Data Pairs
-Name: auths
-Label: 2
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: Self ID
-Description: Self Description Type & Value
-Name: self_id
-Label: 3
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: UAS Classification
-Description: UAS Category & Class
-Name: classification
-Label: 4
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: Area
-Description: Count, Radius, Floor & Ceiling 
-Name: area
-Label: 5
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
-Key: Operator ID
-Description: UAS Pilot Operator ID
-Name: operator_id
-Label: 6
-Value Type: array
-Change Controller: IETF
-Reference: RFC9886, BRID RRType
-
 Key: UAS Status
 Description: ASTM F3411 UAS Status Enumeration 
 Name: ua_status
@@ -117,3 +61,51 @@ Label: 14
 Value Type: map
 Change Controller: IETF
 Reference: This
+
+Key: Broadcast Endorsement
+Description: Broadcast Endorsement
+Name: be
+Label: 15
+Value Type: bytes
+Change Controller: IETF
+Reference: This RFC
+
+Key: Broadcast Endorsement Chain
+Description: List of Broadcast Endorsements
+Name: be_chain
+Label: 16
+Value Type: array of bytes
+Change Controller: IETF
+Reference: This RFC
+
+Key: CAA Assigned ID
+Description: CAA Assigned ID
+Name: caa_assigned_id
+Label: 17
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: Pilot License Number
+Description: Pilot license number from a CAA
+Name: pilot_license_id
+Label: 18
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Serial Number
+Description: ANSI/CTA 2063-A UAS Serial Number
+Name: uas_serial_number
+Label: 19
+Value Type: text
+Change Controller: IETF
+Reference: This RFC
+
+Key: UAS Traffic Management (UTM)
+Description: UTM Operational Intent & Source
+Name: utm
+Label: 20
+Value Type: array
+Change Controller: IETF
+Reference: This RFC

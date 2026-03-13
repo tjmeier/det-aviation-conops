@@ -83,10 +83,3 @@ informative:
         org: IANA
     target: https://www.iana.org/assignments/drip/
     date: Oct 2025
-  IANA.MediaTypes:
-    title: Media Types
-    author:
-      -
-        org: IANA
-    target: https://www.iana.org/assignments/media-types
-    date: July 2025

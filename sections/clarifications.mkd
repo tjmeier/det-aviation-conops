@@ -2,7 +2,7 @@
 
 This section re-iterates, expands and clarifies specific elements as part of the various referenced standards for use of DETs specifically in the UAS/aviation ecosystem.
 
-Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.OME.IFACES. Policy by a CAA and/or DIME may add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
+Data structures in DRIP are extensible using a registry of aviation keys used in specific sections of the models defined in REF.HOME.IFACES. Policy by a CAA and/or DIME may add more keys than defined in this document to any structure or be redacted from an RDAP response based on a users credentials.
  
 This document standardizes the usage of aviation keys based on the HHIT Entity Type. A `*` character in a given cell of {{tbl-inquiry-keys}}, {{tbl-response-keys}} or {{tbl-rdap-keys}} indicates all HHIT Entity Types for the given column apply.
 
@@ -19,7 +19,7 @@ To declare the map elements being using in any of the DIME structures the regist
 
 Registration services are provided via a POST HTTPS interface that consumes and produces either COSE or JOSE objects. The DIMEs Authorization certificate can be used in HTTPS for server side authentication.
 
-DIMEs provide the registration service under the `/.well-known/ome/register` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
+DIMEs provide the registration service under the `/.well-known/home/register` endpoint for interoperable client discovery. See REF.HOME.IFACES for implementation details.
 
 ### Inquiry Keys {#inquiry-keys}
 
@@ -50,13 +50,13 @@ DIMEs provide the registration service under the `/.well-known/ome/register` end
 
 Query services are provided via a GET HTTPS interface that produces JSON objects. The RDAP exchanges uses Mutual TLS for authentication with the OKIX certificates of the DIME and client.
 
-DIMEs provide query services under the `/.well-known/ome/query/` endpoint for interoperable client discovery. See REF.OME.IFACES for implementation details.
+DIMEs provide query services under the `/.well-known/home/query/` endpoint for interoperable client discovery. See REF.HOME.IFACES for implementation details.
 
 ### Uniform Resource Identifier {#query-uri}
 
 The DIMEs Issuing certificate contain the base portion of the URI as described in OKIX. Clients obtain the base URI of a given DET by performing the recursive lookup to obtain the Issuing certificate.
 
-Clients construct the full query string by concatenating the base URI from a certificate and the `/.well-known/ome/query/<ipv6>` of the desired DET before performing the HTTPS GET call. 
+Clients construct the full query string by concatenating the base URI from a certificate and the `/.well-known/home/query/<ipv6>` of the desired DET before performing the HTTPS GET call. 
 
 ### RDAP Response Keys {#rdap-keys}
 

@@ -4,7 +4,7 @@ This appendix is normative and uses the Concise Data Definition Language (CDDL, 
 
 ## Prelude
 
-The CDDL Prelude of {{aviation-prelude}} is built upon the prelude defined in REF.OME.IFACES.
+The CDDL Prelude of {{aviation-prelude}} is built upon the prelude defined in REF.HOME.IFACES.
 
 ~~~~
 {::include cddl/prelude.cddl}

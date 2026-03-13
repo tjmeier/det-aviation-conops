@@ -4,14 +4,14 @@ The DKIX is part of the {{ICAO.ACCP}} to support not just UAS but also general a
 
 - all entities 
   - use {{RFC9374}} for identity (key algorithm; EdDSA) and identifier
-  - register using REF.OME.IFACES including {{csr-subject}} and {{cert-san-hmn}}
+  - register using REF.HOME.IFACES including {{csr-subject}} and {{cert-san-hmn}}
 - all Certificate Authorities 
-  - issue certificates following REF.OME.IFACES and REF.OME.IFACES including {{cert-san-hmn}} and {{cert-ca-policy}}
+  - issue certificates following REF.HOME.IFACES and REF.HOME.IFACES including {{cert-san-hmn}} and {{cert-ca-policy}}
   - issue Endorsements following {{Section 4.2 of RFC9575}} for any HHIT Entity Type that returns the aviations keys of `be` and `be_chain` per {{response-keys}}
 
 ## Signing Request: Subject {#csr-subject}
 
-For REF.OME.IFACES, when the HHIT Entity Type being registered is UA, UAS or RID the Subject is to be set as SERIAL_NUMBER containing an {{ANSI.CTA.2063A}} UAS Serial Number. Subjects for other HHIT Entity Types are left to policy and are out of scope for this document.
+For REF.HOME.IFACES, when the HHIT Entity Type being registered is UA, UAS or RID the Subject is to be set as SERIAL_NUMBER containing an {{ANSI.CTA.2063A}} UAS Serial Number. Subjects for other HHIT Entity Types are left to policy and are out of scope for this document.
 
 ## Subject Alternative Name: Hardware Module Name {#cert-san-hmn}
 

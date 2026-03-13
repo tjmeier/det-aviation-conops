@@ -54,7 +54,7 @@ This document assumes a UAS Manufacturer is already in compliance with {{ASTM.F3
 
 ## HDA Operators
 
-The technical responsibilities of an HDA Operator are covered in REF.OME.IFACES.
+The technical responsibilities of an HDA Operator are covered in REF.HOME.IFACES.
 
 In the UTM context, it is expected that the HDA function will be provided by a UAS Service Supplier (USS) to its clients (e.g. UAS Operators). This can be in-house or out-sourced to a service bureau running as a Supplemental Data Service Provider (SDSP) more specialized in cryptographically verifiable identifiers usable to access data and systems on networks.
 
@@ -73,11 +73,11 @@ Having and HDA as a SDSP can provide unified identifiers across a UTM or set of 
 
 ## RAA Operators
 
-The technical responsibilities of an RAA Operator are covered in REF.OME.IFACES.
+The technical responsibilities of an RAA Operator are covered in REF.HOME.IFACES.
 
 In the context of this document, RAA Operators are typically CAAs or other cognizant authorities of a Nation State. Each Nation State is allocated four RAA values that are used at their discretion. To obtain these allocations, a Nation State contacts the Apex Operator (IANA) requesting provisioning out of the ISO Countries range providing any details required by the Apex Operator to configure domain delegations.
 
-While specific details are out of scope and are left as national matters, RAA Operators are expected to confirm HDA Operators are in compliance with any required specifications to serve their role. RAAs are also expected in the aviation ecosystem to provide the Oracle as a Service function of REF.OME.IFACES.
+While specific details are out of scope and are left as national matters, RAA Operators are expected to confirm HDA Operators are in compliance with any required specifications to serve their role. RAAs are also expected in the aviation ecosystem to provide the Oracle as a Service function of REF.HOME.IFACES.
 
 In the context of aviation pre-allocated RAAs to CAAs are currently expected to mutually cross-certify as specified in {{ICAO.ACCP}}.
 
@@ -85,6 +85,6 @@ In the context of aviation pre-allocated RAAs to CAAs are currently expected to 
 
 ## Apex Operators
 
-The technical responsibilities of an Apex Operator are covered in REF.OME.IFACES.
+The technical responsibilities of an Apex Operator are covered in REF.HOME.IFACES.
 
 Currently IANA performs the functions of RAA delegation (with no endorsement) and DNS zone maintenance for the DET prefix. This is largely a custodial task as critical portions of the RAA range, with regards to aviation, are already reserved or allocated with the rest of the range unassigned.
