@@ -1,0 +1,15 @@
+# Single/Multiple Signing and Encryption in Registration Inquiries
+
+This appendix is informatative. It expounds on the four implicit use cases of JOSE and COSE in the registration process from {{registration}}. These use cases include single-sign single-encrypt, multiple-sign single-encrypt, single-sin multiple-encrypt, multiple-sign multiple-encrypt. These use-cases apply whether using JOSE or COSE objects in registration inquiries.
+
+## Single-Sign Single-Encryption
+When a registrant signs their inquiry using their registered identity, and then encrypts the payload using a shared-key with the registrar.
+
+## Multiple-Sign Single-Encryption
+When a registrant possesses multiple unique identities, or proxies for multiple identities, and adds multiple unique signatures to the inquiry, and then encrypts the payload using one shared key with the registrar.
+
+## Single-Sign Multiple-Encryption
+When a registrant signs their inquiry and then encrypts multiple instances of the same payload with different shared keys. This is when there are more entities than just the registrar that need to validate the inquiry, and these entities don't share the same secret with eachother, but all share a secret with the registrant.
+
+## Multiple-Sign Multiple-Encryption
+When a registrant possesses multiple unique identities, or proxies for multiple identities, and adds multiple unique signatures to the inquiry, and also encrypts that payload multiple times for more entities than just the registrar that will be validating that inquiry.
