@@ -33,3 +33,5 @@ This document is a concept of operations for Drone Remote Identification Protoco
 {::include-nested sections/appendix/abbrev.mkd}
 
 {::include-nested sections/appendix/cddl.mkd}
+
+{::include-nested sections/appendix/singlemulti.mkd}
