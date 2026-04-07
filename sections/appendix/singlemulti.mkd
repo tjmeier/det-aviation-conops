@@ -4,12 +4,17 @@ This appendix is informatative. It expounds on the four implicit use cases of JO
 
 ## Single-Sign Single-Encryption
 When a registrant signs their inquiry using their registered identity, and then encrypts the payload using a shared-key with the registrar.
+An example of a single-sign single-encypt registration inquiry would be when a UAS Operator wishes to register themselves with their locality's CAA. They will generate a host identity key pair and share an encryption key with the CAA. The UAS Operator will then sign the inquiry with their host identity private key which can then be verified by the CAA with the provided host identity public key, and the UAS Operator will also encrypt the inquiry with their shared encryption key.
 
 ## Multiple-Sign Single-Encryption
 When a registrant possesses multiple unique identities, or proxies for multiple identities, and adds multiple unique signatures to the inquiry, and then encrypts the payload using one shared key with the registrar.
+An example of a multiple-sign single-encrypt registration inquiry would be when a CAA-registered UAS Operator wishes to register a session host identity for their UAS. The UAS will generate a host identity key pair and sign the inquiry with its private key. The UAS Operator will also sign the inquiry with its registered host identity private key. The UAS Operator will share an encryption key with the CAA, and additionally encrypt the inquiry with the encryption key. The CAA can then decrypt the inquiry and check the signatures made by both the UAS Operator and the UAS itself with the UAS's new host identity found in the inquiry. 
 
 ## Single-Sign Multiple-Encryption
 When a registrant signs their inquiry and then encrypts multiple instances of the same payload with different shared keys. This is when there are more entities than just the registrar that need to validate the inquiry, and these entities don't share the same secret with eachother, but all share a secret with the registrant.
+An example of a single-sign multi-encypt registration inquiry would be when a UAS Operator wishes to register themselves with their locality's CAAs, in the case where there may be more than one CAA at play in a locality. They will generate a host identity key pair and share a unique encryption key with each CAA. The UAS Operator will then sign the inquiry with their host identity private key which can then be verified by the CAAs with the provided host identity public key, and the UAS Operator will also provide multiple encrypted inquiries, each encrypted by a key that was shared with one of the CAAs.
+
 
 ## Multiple-Sign Multiple-Encryption
 When a registrant possesses multiple unique identities, or proxies for multiple identities, and adds multiple unique signatures to the inquiry, and also encrypts that payload multiple times for more entities than just the registrar that will be validating that inquiry.
+An example would be the same case of Multiple-Sign Single Encryption, when a UAS Operator is registering a UAS session host identity, but multiple encryptions of the inquiry are then provided where there are multiple CAAs who need to validate the inquiry, as seen in the Single-Sign Multiple-Encryption case.
